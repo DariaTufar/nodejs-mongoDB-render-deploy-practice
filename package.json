@@ -13,7 +13,6 @@
     "cross-env": "7.0.3",
     "express": "4.17.1",
     "joi": "^17.8.3",
-    "mongodb": "^5.0.1",
     "mongoose": "^6.9.3",
     "morgan": "1.10.0",
     "nanoid": "^4.0.1",
