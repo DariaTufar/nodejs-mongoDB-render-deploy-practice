@@ -1,12 +1,10 @@
 const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
-const app = express();
-
-
 
 const contactsRouter = require('./routes/api/contacts')
 
+const app = express()
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
 
@@ -21,10 +19,9 @@ app.use((req, res) => {
 })
 
 app.use((err, req, res, next) => {
-  res.status(500).json({ message: err.message })
+  const { status = 500, message = "Some server error, we are working on it" } = err;
+  res.status(status).json({ message })
 })
-
-
 
 
 module.exports = app
