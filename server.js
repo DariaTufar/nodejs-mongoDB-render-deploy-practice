@@ -2,16 +2,15 @@ const app = require("./app");
 
 const mongoose = require("mongoose");
 
-const { DB_HOST } = process.env
-
-console.log(process.env)
+  // console.log(process.env);
+ const { DB_HOST } = process.env;
 mongoose.set("strictQuery", true);
 
-mongoose
-  .connect(DB_HOST)
+// console.log(DB_HOST)
+mongoose.connect(DB_HOST)
   .then(() => {
     app.listen(7070, () => {
-      console.log("Server running. Use our API on port: 7070");
+      console.log(`Server running. Use our API on port 7070`);
     });
   })
   .catch((error) => {
