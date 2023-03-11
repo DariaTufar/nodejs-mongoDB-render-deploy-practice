@@ -14,7 +14,6 @@ const userSchema = new Schema({
     type: String,
     required: [true, "Email is required"],
     unique: true,
-    // match: emailRegExp,
   },
   subscription: {
     type: String,
@@ -23,9 +22,13 @@ const userSchema = new Schema({
   },
   token: {
     type: String,
-    default: "" ,
+    default: "",
   },
-} );
+  avatarURL: {
+    type: String,
+    required: [true, "Avatar is required"],
+  },
+});
 
 userSchema.post("save", handleMongooseError);
 
@@ -33,14 +36,13 @@ const schemaRegister = Joi.object({
   password: Joi.string().min(6).required(),
   email: Joi.string().required(),
   subscription: Joi.string().required(),
-//   token: Joi.string().required(),
+ 
 });
 
 const schemaLogin = Joi.object({
   password: Joi.string().min(6).required(),
   email: Joi.string().required(),
-//   subscription: Joi.string().required(),
-//   token: Joi.string().required(),
+ 
 });
 
 const User = model("user", userSchema);
